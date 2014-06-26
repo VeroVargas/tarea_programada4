@@ -1,0 +1,183 @@
+$def with (datos)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+  		<title>Gourmet Virtual</title>
+  		<meta charset=utf-8 /> 
+  		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+  		<link rel="stylesheet" type="text/css" href="../static/style4.css" media="screen" />
+  		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script>
+			jQuery(function () {
+				jQuery("#enviar").button({icons: {primary: "ui-icon-locked"}});
+				jQuery( "#accordion" ).accordion();
+				jQuery( "#accordion" ).accordion("option", { collapsible: true, active: false });
+			});
+		</script>
+		<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+		<script src="js/jquery-1.10.2.js"></script>
+		<script src="js/jquery-ui-1.10.4.js"></script>
+		<script type="text/javascript" language="javascript">
+			jQuery(function() {
+				jQuery( "#btn" ).button();
+				jQuery( "#datepicker" ).datepicker
+			});
+		
+			function validar(){  			
+				jQuery("#formulario1").submit();
+
+			}
+		</script>
+		<style>
+		      #map-canvas {
+			height: 300px;
+			margin: 100px;
+			width:500px;
+			padding: 0px
+		      }
+		    </style>
+		    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		   		
+</head>
+
+<body>
+<script>
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    
+    if (response.status === 'connected') {
+      
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId : 1504641409766129,
+    cookie : true,                 
+    xfbml : true,
+    version : 'v2.0' 
+  });
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  
+  
+  function testAPI() {
+    console.log('Welcome! Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+	//ACCION LUEGO DE LOGGEARSE data.name
+	
+        
+    });
+    document.getElementByID('usuario').value = response.name;
+  }
+</script>
+	<section id="principal">
+		<section id="titulo">
+			<table>
+				<tr>
+				<td><fb:login-button scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();"></fb:login-button><td>				
+				</tr>
+			</table>
+		</section>
+		<section id="cuerpo">
+			<section id="menu">
+					</br></br>
+					<img id="imagen" src="../static/logo.jpg" /><br/><br/>
+					<section id="accordion">
+  						<h3>Busqueda por:</h3>
+  						<div>
+    							<ul>
+							    <li><a href="/busquedaPrecio">Precio</a><br/></li>
+							    <li><a href="/busquedaFacilidades">Facilidades</a><br/></li>
+							    <li><a href="/busquedaCaracteristicas">Caracteristicas</a><br/></li>
+							</ul>
+  						</div>
+					</section>
+						
+			</section>
+			<section id="foto">
+				</br></br></br>
+				<form id="formulario1" name="formulario1" method="post" action="busquedaCaracteristicas">
+				<table>
+					<tr>					
+						<td>Número de cuartos</td>
+						<td><input type="text" id="txtnc" name="txtnc"/></td>
+					</tr>
+					<tr>
+						<td>Cuarto compartido</td>
+						<td><select name="ccomp" id="ccomp" class="text">
+						<option value="true">Si</option>
+						<option value="false">No</option>
+						</select><td>
+					</tr>
+					<tr>
+					<td>Cochera</td>
+					<td><select name="cochera" id="cochera" class="text">
+						<option value="true">Si</option>
+						<option value="false">No</option>
+					</select></td>
+					</tr>
+					<tr>
+					<td>Baño compartido</td>
+					<td><select name="bcomp" id="bcomp" class="text">
+						<option value="true">Si</option>
+						<option value="false">No</option>
+					</select></td>
+					</tr>
+					<tr>
+					<td><br/>&nbsp;Amueblado</td>
+					<td><select name="amueblado" id="amueblado" class="text">
+						<option value="true">Si</option>
+						<option value="false">No</option>
+					</select></td></tr></table>
+					<input type="button" id="btn" onclick="validar()" value="Buscar"/>
+				
+				</form>
+					
+						</br>
+						$for number in datos:
+							$number
+							</br>
+			</section>
+		</section>
+		<section id="final">
+			<h4>Aplicaci&oacute;n hecha por: Ver&oacute;nica Vargas Mora</h4>
+		</section>
+	</section>
+</body>
+</html>

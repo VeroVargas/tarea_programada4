@@ -2,34 +2,27 @@
 <html>
 <head>
   <title>Busk-Aparta</title>
-  <meta charset=utf-8 /> 
+  <meta charset=utf-8 />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-  <link rel="stylesheet" type="text/css" href="../static/estilo.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="../static/style.css" media="screen" />
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-		<script>
-			jQuery(function () {
-				jQuery("#enviar").button({
-				  icons: {primary: "ui-icon-locked"}
-				});
-				jQuery( "#accordion" ).accordion();
-				jQuery( "#accordion" ).accordion("option", { collapsible: true, active: false });
-			});
-		</script>
-</head>
+<script type="text/javascript" language="javascript">
+	function validar(){ jQuery("#formLogin").submit();}
+	</script>
+	
+<script>
+	
 
-<body>
-		<script>
 
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
-    
+
     if (response.status === 'connected') {
-      
-      testAPI();
+	testAPI();
     } else if (response.status === 'not_authorized') {
       
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -51,9 +44,9 @@
   window.fbAsyncInit = function() {
   FB.init({
     appId : 1504641409766129,
-    cookie : true,                 
+    cookie : true,
     xfbml : true,
-    version : 'v2.0' 
+    version : 'v2.0'
   });
 
   FB.getLoginStatus(function(response) {
@@ -72,41 +65,56 @@
   
   
   function testAPI() {
+	
+	validar();
     console.log('Welcome! Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+	
         
     });
     document.getElementByID('usuario').value = response.name;
+	
+	
   }
 </script>
+</head>
+
+<body>
 
 
-
-
-	<section id="principal">
-		<section id="titulo"><h1>Busk Aparta</h1></section>
-		<section id="cuerpo">
-			
-					
-				</br></br></br></br></br></br></br>
-				<table align="center">
-					<tr>
-						<td><h1>Busk Aparta</h1></td></br>
-					</tr>
-					<tr>
-						<td><Fb:login -button>Iniciar sesion</fb: login-button><td>
-					</tr>
-				</table>
-
-
-			</br></br></br></br></br></br></br>
+<section id="principal">
+<section id="titulo">
+	<form id="formLogin" name="formLogin" method="post" action="menu_Busk">
+	<table>
+		<tr>
+			<td>
+				<fb:login-button scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();">
+				</fb:login-button></td>		
+		<tr>
+	</table>
+	</form>
+</section>
+	<section id="cuerpo">
+		<section id="menu">
+			<h1>Busk-Aparta</h1>
+			</br>
+			<p>Es una apliación que facilita la busqueda de apartamentos para estudiantes del Instituto
+			Tecnologico de Costa Rica</p>
+			</br>
+			<p>Además brinda espacio a los dueños de apartamentos para publicar sus apartamentos y 
+			facilitar la renta de los mismo</p>
 		</section>
-		<section id="final">
-			<h4>Aplicaci&oacute;n hecha por: Ver&oacute;nica Vargas Mora</h4>
+		<section id="foto">
+			<img style="display:block"  margin=0 auto=0 id="imagen" src="../static/logo.jpg" align="center"/>
 		</section>
-	</section>
+
+</section>
+<section id="final">
+<h4>Aplicaci&oacute;n hecha por: Ver&oacute;nica Vargas Mora</h4>
+</section>
+</section>
 </body>
 </html>
