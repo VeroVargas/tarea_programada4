@@ -116,7 +116,7 @@ $def with (datos)
 		</section>
 		<section id="cuerpo">
 			<section id="menu">
-					</br></br></br>
+					</br></br>
 					<img id="imagen" src="../static/logo.jpg" /><br/><br/>
 					<section id="accordion">
   						<h3>Busqueda por:</h3>

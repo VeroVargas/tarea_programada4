@@ -121,16 +121,7 @@ $def with (datos)
 			<section id="menu">
 					
 					<img id="imagen" src="../static/logo.jpg" /><br/><br/>	
-					<section id="accordion">
-  						<h3>Busqueda por:</h3>
-  						<div>
-    							<ul>
-							    <li><a href="/busquedaPrecio">Precio</a><br/></li>
-							    <li><a href="/busquedaFacilidades">Facilidades</a><br/></li>
-							    <li><a href="/busquedaCaracteristicas">Caracteristicas</a><br/></li>
-							</ul>
-  						</div>
-					</section>
+					
 			</section>
 			<section id="foto">
 				</br></br></br>
