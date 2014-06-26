@@ -3,7 +3,7 @@
 	font-family:"Segoe UI";
 }
 body{
-	background-color:  #04B431;
+	background-color:  #01DF3A;
 }
 
 section#principal{
@@ -31,17 +31,33 @@ section#titulo h1{
 	color:#778899;
 }
 
-section#cuerpo h1{
+section#cuerpo{
+	
+	max-width: 100em;
+	min-height: 20%;
+	padding:0;
+	text-align: left;
+}
+
+section#menu, section#foto{
+	display: inline-block;
+	max-width: auto;
+	min-height: auto;
+	padding: 0.25em;
+	vertical-align: top;
+	width: 25%;
+	height: 20%;
+	text-align: left
+}
+
+section#menu h1{
 	font-size:2em;
 	color:#04B431;
 }
 
-section#cuerpo{
-	
-	max-width: 100em;
-	min-height: 30%;
-	padding:0;
-	text-align: left;
+section#foto{
+	width: 70%;
+	text-align: center
 }
 
 section#final{
